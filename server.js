@@ -6,4 +6,4 @@ var server = http.createServer(function(req, res) {
   res.end(fs.readFileSync('index.html'));
 });
 
-server.listen(process.env.port);
+server.listen(process.env.PORT);
