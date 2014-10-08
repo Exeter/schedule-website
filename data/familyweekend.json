@@ -1,0 +1,15 @@
+{
+    "name" : "Family Weekend",
+    "label" : "Family Weekend",
+    "days" : {
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "noclass"
+            ],
+            "allday" : [
+                "No Class"
+            ]
+        }
+    }
+}

@@ -1,0 +1,107 @@
+{
+    "name" : "Finals Week",
+    "label" : "Finals Week - Winter",
+    "symbols" : {
+        "finals" : {
+            "label" : "Winter Finals Schedule",
+            "minutes" : 255
+        },
+        "close" : {
+            "label" : "End Of Term Dorms Close At 6pm",
+            "minutes" : 180 
+        },
+	"afin" : {
+	    "label" : "A",
+	    "minutes" : 75
+	},
+	"bfin" : {
+	    "label" : "B",
+	    "minutes" : 75
+	},
+	"cfin" : {
+	    "label" : "C",
+	    "minutes" : 75
+	},
+	"dfin" : {
+	    "label" : "D",
+	    "minutes" : 75
+	},
+	"efin" : {
+	    "label" : "E",
+	    "minutes" : 75
+	},
+	"ffin" : {
+	    "label" : "F",
+	    "minutes" : 75
+	},
+	"gfin" : {
+	    "label" : "G",
+	    "minutes" : 75
+	},
+	"hfin" : {
+	    "label" : "H",
+	    "minutes" : 75
+	},
+	"phyfin" : {
+	    "label" : "Physics 202/208/220/420",
+	    "minutes" : 75
+	},
+	"biofin" : {
+	    "label" : "Biology 120/220/420",
+	    "minutes" : 75
+	},
+	"chemfin" : {
+	    "label" : "Chemistry 220/329/420 & English 120",
+	    "minutes" : 75
+	}, 
+	"passfin" : {
+	    "label" : "Passing",
+	    "minutes" : 15
+	}, 
+	"lunchfin" : {
+	    "label" : "Lunch",
+	    "minutes" : 60
+	},
+	"lfin" : {
+	    "label" :  "Lunch",
+	    "minutes" : 45
+	},
+	"sportsfin" : {
+	    "label" : "JV/V Sports",
+	    "minutes" : 240
+	},
+	"assemble" : {
+	    "label" : "Assembly",
+	    "minutes" :30 
+	}
+    },
+    "days" : {
+        "3" : {
+            "label" : "Monday",
+            "events" : [
+	    	"passfin","finals"
+	    ],
+	    "eventsTEMP" : [
+	    	"passfin", "efin", "passfin", "med", "passfin", "bfin", "lunchfin", "phyfin", "passfin", "hfin", "passfin", "sportsfin"
+            ]
+        },
+        "4" : {
+            "label" : "Tuesday",
+	    "events" : [
+	    	"passfin", "finals"
+	    ],
+	    "eventsTEMP" : [
+	    	"passfin", "afin", "passfin", "chemfin", "passfin", "assemble", "passfin", "lfin", "dfin", "passfin", "ffin", "passfin", "sportsfin"
+            ]
+        },
+        "5" : {
+            "label" : "Wednesday",
+            "events" : [
+	    	"passfin" ,"finals", "close", "faculty"
+	    ],
+	    "eventsTEMP" : [
+                "passfin", "cfin", "passfin", "biofin", "passfin", "gfin", "close", "faculty"
+            ]
+        }
+    }
+}

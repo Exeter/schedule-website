@@ -1,0 +1,20 @@
+{
+    "name" : "Week 1",
+    "label" : "Week 1 Department Meetings and Meditation Switch",
+    "days" : {
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "c","pass","b","pass","dept","pass","e","pass","g","lunch",
+                "pass","sports","pass","I"
+            ]
+        },
+        "4" : {
+            "label" : "Thursday",
+            "events" : [
+                "v","pass","d","pass","med","break","pass","a","pass","B","lunch",
+                "x","pass","f","uni","g","pass","H","dinner","i"
+            ]
+        }
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "symbols" : {
+        "med" : {
+            "label" : "Meditation",
+            "minutes" : 30
+        },
+        "assemble"  : {
+            "label" : "Assembly",
+            "minutes" : 30
+        },
+	"advise" : {
+	    "label" : "Advising",
+	    "minutes" : 30
+	},
+        "dept" : {
+            "label" : "Department Meeting",
+            "minutes" : 50
+        },
+        "faculty" : {
+            "label" : "Faculty Meeting",
+            "minutes" : 50
+        },
+        "break" : {
+            "label" : "Break",
+            "minutes" : 20
+        },
+        "uni" : {
+            "label" : "Uni Free",
+            "minutes" : 30
+        },
+        "lunch" : {
+            "label" : "Lunch",
+            "minutes" : 50
+        },
+        "dinner" : {
+            "label" : "Dinner",
+            "minutes" : 45
+        },
+        "sports" : {
+            "label" : "JV/V Sports",
+            "minutes" : 255
+        },
+        "pass" : {
+            "label" : "Passing",
+            "minutes" : 5
+        },
+	"pass2" : {
+	    "label" : "Passing",
+	    "minutes" : 10
+	},
+        "i" : {
+            "label" : "I",
+            "minutes" : 90
+        },
+        "I" : {
+            "label" : "I",
+            "minutes" : 150
+        },
+        "noclass" : {
+            "label" : "No Class",
+            "minutes" : 180
+        },
+        "*" : {
+            "lowercase" : 50,
+            "uppercase" : 70,
+            "default" : 50
+        }
+    },
+    "days" : {
+        "start" : "08:00",
+        "6" : {
+            "label" : "Saturday",
+	    "day" : "Saturday",
+            "events" : [
+                "noclass", "sports"
+            ],
+            "allday" : [
+                "noclass"
+            ]
+        },
+        "7" : {
+            "label" : "Sunday",
+	    "day" : "Sunday", 
+            "events" : [
+                "noclass"
+            ],
+            "allday" : [
+                "noclass"
+            ]
+        }
+    }
+}

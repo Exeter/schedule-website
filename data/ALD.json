@@ -1,0 +1,19 @@
+{
+    "symbols" : {
+        "ALD" : {
+            "label" : "Academy Life Day",
+            "minutes" : 540
+        }
+    },
+    "days" : {
+       "1" : {
+           "start" : "8:30",
+            "label" : "Academy Life",
+            "events" : [
+                "ALD"
+            ],
+            "allday" : []
+       }
+    }
+}
+

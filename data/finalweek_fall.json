@@ -1,0 +1,120 @@
+{
+    "name" : "Finals Week",
+    "label" : "Finals Week - Fall",
+    "symbols" : {
+        "finals" : {
+            "label" : "Fall Finals Schedule",
+            "minutes" : 255
+        },
+        "close" : {
+            "label" : "End Of Term Dorms Close At 6pm",
+            "minutes" : 180 
+        },
+	"afin" : {
+	    "label" : "A",
+	    "minutes" : 75
+	},
+	"bfin" : {
+	    "label" : "B",
+	    "minutes" : 75
+	},
+	"cfin" : {
+	    "label" : "C",
+	    "minutes" : 75
+	},
+	"dfin" : {
+	    "label" : "D",
+	    "minutes" : 75
+	},
+	"efin" : {
+	    "label" : "E",
+	    "minutes" : 75
+	},
+	"ffin" : {
+	    "label" : "F",
+	    "minutes" : 75
+	},
+	"gfin" : {
+	    "label" : "G",
+	    "minutes" : 75
+	},
+	"hfin" : {
+	    "label" : "H",
+	    "minutes" : 75
+	},
+	"phyfin" : {
+	    "label" : "Physics 201/210/410",
+	    "minutes" : 75
+	},
+	"biofin" : {
+	    "label" : "Biology 110/210/410",
+	    "minutes" : 75
+	},
+	"chemfin" : {
+	    "label" : "Chemistry 210/319/410 & English 110",
+	    "minutes" : 75
+	}, 
+	"passfin" : {
+	    "label" : "Passing",
+	    "minutes" : 15
+	}, 
+	"lunchfin" : {
+	    "label" : "Lunch",
+	    "minutes" : 60
+	},
+	"sportsfin" : {
+	    "label" : "JV/V Sports",
+	    "minutes" : 240
+	}
+    },
+    "days" : {
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "t","pass","b","pass","faculty","pass","c","pass","D","lunch",
+                "E","pass","f","uni","g","pass","q","dinner","i"
+            ]
+        },
+        "2" : {
+            "label" : "Tuesday",
+            "events" : [
+                "u","pass","a","pass","assemble","break","pass","d","pass","C","lunch",
+                "e","pass","F","uni","z","pass","h","dinner","i"
+            ]
+        },
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "c","pass","b","pass","med","break","pass","e","pass","g","lunch",
+                "pass","sports","pass","I"
+            ]
+        },
+        "4" : {
+            "label" : "Thursday",
+            "events" : [
+	    	"passfin", "finals"
+	    ],
+	    "eventsTEMP" : [
+	    	"passfin", "dfin", "passfin", "biofin", "passfin", "afin", "passfin", "lunchfin", "passfin", "hfin", "passfin", "sportsfin"
+            ]
+        },
+        "5" : {
+            "label" : "Friday",
+	    "events" : [
+	    	"passfin", "finals"
+	    ],
+	    "eventsTEMP" : [
+	    	"passfin", "efin", "passfin", "phyfin", "passfin", "assemble", "passfin", "lunchfin", "passfin", "cfin", "passfin", "gfin", "passfin", "sportsfin"
+            ]
+        },
+        "6" : {
+            "label" : "Saturday",
+            "events" : [
+	    	"passfin", "finals", "close","faculty"
+	    ],
+	    "eventsTEMP" : [
+                "passfin", "bfin", "passfin", "chemfin", "passfin", "ffin", "close", "faculty"
+            ]
+        }
+    }
+}

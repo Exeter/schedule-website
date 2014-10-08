@@ -1,0 +1,20 @@
+{
+    "symbols" : {
+        "meetings" : {
+            "label" : "Meetings",
+            "minutes" : 50
+        }
+    },
+    "days" : {
+       "6" : {
+           "start" : "8:00",
+            "label" : "Saturday",
+            "events" : [
+                "c","pass","b","pass","meetings","pass","e","pass","g","lunch",
+                "pass","sports"
+            ],
+            "allday" : []
+       }
+    }
+}
+

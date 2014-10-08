@@ -1,0 +1,31 @@
+{
+    "symbols" : {
+        "meetings" : {
+            "label" : "Meetings",
+            "minutes" : 50
+        },
+        "MLK" : {
+            "label" : "MLK Events",
+            "minutes" : 180
+        }
+    },
+    "days" : {
+        "5": {
+            "start" : "9:00",
+            "label" : "MLK",
+            "events" : [
+                "MLK"
+            ]
+        },
+       "6" : {
+           "start" : "8:00",
+            "label" : "Saturday",
+            "events" : [
+                "c","pass","b","pass","meetings","pass","e","pass","g","lunch",
+                "pass","sports"
+            ],
+            "allday" : []
+       }
+    }
+}
+

@@ -1,0 +1,26 @@
+{
+    "name" : "Week 1",
+    "label" : "First Week - Winter",
+    "symbols" : {
+        "return" : {
+            "label" : "Students Return",
+            "minutes" : 250
+        },
+        "meetings" : {
+            "label" : "Meetings",
+            "minutes" : 50
+        },
+	"sports" : {
+	    "label" : "JV/V Sports",
+	    "minutes" : 235
+	}
+    },
+    "days" : {
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "return"
+            ]
+        }
+    }
+}

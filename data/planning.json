@@ -1,0 +1,17 @@
+{
+    "label" : "",
+    "symbols" : {
+    	"strat" : {
+			"label" : "No Classes (Strategic Planning)",
+			"minutes" : 240
+		}
+    },
+    "days" : {
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "strat","lunch","sports"
+            ]
+        }
+    }
+}

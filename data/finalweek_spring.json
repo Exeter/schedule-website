@@ -1,0 +1,70 @@
+{
+    "name" : "Finals Week",
+    "label" : "Finals Week - Spring",
+    "symbols" : {
+        "finals" : {
+            "label" : "Spring Finals Schedule",
+            "minutes" : 250
+        },
+        "clean" : {
+            "label" : "Clean & Pack",
+            "minutes" : 150
+        },
+        "close" : {
+            "label" : "End Of Year!",
+            "minutes" : 150
+        },
+        "seniors" : {
+            "label" : "Seniors Events",
+            "minutes" : 240
+        },
+        "faculty" : {
+            "label" : "Last Faculty Meeting",
+            "minutes" : 210
+        },
+        "*" : {
+            "lowercase" : 25
+        }
+    },
+    "days" : {
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "finals", "clean"
+            ]
+        },
+        "2" : {
+            "label" : "Tuesday",
+            "events" : [
+                "finals", "clean"
+            ]
+        },
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "finals", "clean"
+            ]
+        },
+        "4" : {
+            "label" : "Thursday",
+            "events" : [
+                "a","pass","b","pass","c","pass","d","pass","e","pass",
+                "f","pass","g","pass","h","pass","close"
+            ]
+        },
+        "5" : {
+            "label" : "Friday",
+            "events" : [
+                "seniors"
+            ]
+        },
+        "6" : {
+            "start" : "8:30",
+            "label" : "Saturday",
+            "events" : [
+                "faculty"
+            ]
+        }
+
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name" : "Week 1",
+    "symbols" : {
+        "assemble" : {
+            "label" : "Assembly",
+            "minutes" : 50
+        }
+    },
+    "days" : {
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "u","pass","a","pass","assemble","pass","d","pass","C","lunch",
+                "e","pass","F","uni","z","pass","h","dinner","i"
+            ]
+        },
+        "2" : {
+            "label" : "Tuesday",
+            "events" : [
+	    	"t","pass","b","pass","faculty","pass","c","pass","D","lunch",
+                "E","pass","f","uni","g","pass","q","dinner","i"
+            ]
+        }
+    }
+}

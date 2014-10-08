@@ -1,0 +1,27 @@
+{
+    "name" : "Experience Exeter/Week 2",
+    "days" : {
+        "2" : {
+            "label" : "Tuesday",
+            "events" : [
+                "t","pass","b","pass","break","assemble", "pass","c","pass","D","lunch",
+                "E","pass","f","uni","g","pass","q","dinner","i"
+            ]
+        },
+        "1" : {
+            "label" : "Monday",
+		    "day" : "Monday",
+            "events" : [
+                "u","pass","a","pass","break","med","pass","d","pass","C","lunch",
+                "e","pass","F","uni","z","pass","h","dinner","i"
+            ]
+        },
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "d","pass","a","pass","faculty","pass","f","pass","h","lunch",
+                "pass","sports","pass","I"
+            ]
+        }
+    }
+}

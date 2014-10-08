@@ -1,0 +1,62 @@
+{
+    "name" : "Vacation",
+    "label": "Vacation",
+    "symbols" : {
+        "noclass" : {
+            "label" : "Vacation",
+            "minutes" : 250
+        }
+    },
+    "days" : {
+        "start" : "08:00",
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "noclass"
+            ]
+        },
+        "2" : {
+            "label" : "Tuesday",
+            "events" : [
+                "noclass"
+            ]
+        },
+
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "noclass"
+            ]
+        },
+        "4" : {
+            "label" : "Thursday",
+            "events" : [
+                "noclass"
+            ]
+        },
+        "5" : {
+            "label" : "Friday",
+            "events" : [
+                "noclass"
+            ]
+        },
+        "6" : {
+            "label" : "Saturday",
+            "events" : [
+                "noclass"
+            ],
+            "allday" : [
+                "noclass"
+            ]
+        },
+        "7" : {
+            "label" : "Sunday",
+            "events" : [
+                "noclass"
+            ],
+            "allday" : [
+                "noclass"
+            ]
+        }
+    }
+}

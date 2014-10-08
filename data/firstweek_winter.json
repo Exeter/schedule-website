@@ -1,0 +1,61 @@
+{
+    "name" : "Week 1",
+    "label" : "First Week - Winter",
+    "symbols" : {
+        "return" : {
+            "label" : "Students Return",
+            "minutes" : 250
+        },
+        "meetings" : {
+            "label" : "Meetings",
+            "minutes" : 50
+        },
+	"sports" : {
+	    "label" : "JV/V Sports",
+	    "minutes" : 235
+	}
+    },
+    "days" : {
+        "1" : {
+            "label" : "Monday",
+            "events" : [
+                "return"
+            ]
+        },
+        "2" : {
+            "label" : "Tuesday",
+            "events" : [
+                "u","pass","a","pass","assemble","break","pass","d","pass","C","lunch",
+                "e","pass","F","uni","z","pass","h","dinner","i"
+            ]
+        },
+        "3" : {
+            "label" : "Wednesday",
+            "events" : [
+                "c","pass","b","pass","med","pass2", "advise", "pass","e","pass","g","lunch",
+                "pass","sports","pass","I"
+            ]
+        },
+        "4" : {
+            "label" : "Thursday",
+            "events" : [
+                "v","pass","d","pass","dept","pass","a","pass","B","lunch",
+                "x","pass","f","uni","g","pass","H","dinner","i"
+            ]
+        },
+        "5" : {
+            "label" : "Friday",
+            "events" : [
+                "w","pass","c","pass","assemble","break","pass","b","pass","A","lunch",
+                "e","pass","y","uni","G","pass","h","dinner"
+            ]
+        },
+        "6" : {
+            "label" : "Saturday",
+            "events" : [
+                "d","pass","a","pass","meetings","pass","f","pass","h","lunch",
+                "pass","sports"
+            ]
+        }
+    }
+}
