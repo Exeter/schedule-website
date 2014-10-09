@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "bootstrap": "~2.3.1",
-    "bootstrap-calendar": "~0.2.4"
+    "bootstrap-calendar": "~0.2.4",
+    "jquery-ui": "~1.11.1"
   }
 }

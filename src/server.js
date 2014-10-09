@@ -8,9 +8,18 @@ REGULAR_EVENTS = [
   {
     id: 0,
     name: 'Daily Event',
+    color: '#A6B9C4',
     start: 1412809833621,
     duration: 3600000,
     frequency: 86400000
+  },
+  {
+    id: 1,
+    name: 'Odd-Hours Event',
+    color: '#EDF393',
+    start: 1412802633621,
+    duration: 7200000,
+    frequency: 172800000
   }
 ];
 
@@ -28,7 +37,7 @@ app.get('/events', function(req, res, next) {
       events.push({
         id: ev.id.toString() + '@' + startTime,
         title: ev.name,
-        class: 'event-important',
+        color: ev.color,
         start: startTime,
         end: startTime + ev.duration
       });
