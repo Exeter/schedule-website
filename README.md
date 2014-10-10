@@ -1,7 +1,7 @@
 schedule-website
 ================
 
-Notes for Beginners
+<b> Notes for Beginners </b>
 
 To setup for the first time, install nodejs, heroku-toolbelt, and bower. Run npm install and then bower install to install dependencies of project. To run the project locally, use foreman start.
 
