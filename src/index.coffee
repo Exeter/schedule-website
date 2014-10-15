@@ -28,12 +28,93 @@ class Calendar
     }
     @render 10
 
-  render: (duration = 7, begin)->
+  getColumnForDate: (date) ->
+    begin = +(new Date date.getYear() + 1900, date.getMonth(), date.getDay(), 0, 0, 0)
+
+    @data begin, begin + DAY * duration, (events) =>
+      events = (events).filter (event) -> 0 < event.start - begin < DAY * duration
+
+      columns.push column = $('<div>').css({
+        'display': 'table-cell'
+        'width':  '150px'
+        'padding': '2px'
+        'position': 'relative'
+        'text-align': 'center'
+        'background': if i is today.getDay() then '#FFD' else if i % 2 is 1 then '#FFF' else '#EEE'
+      })
+      column.append $('<div>').css({
+        'position': 'absolute'
+        'top': '0px'
+        'left': '0px'
+        'right': '0px'
+      }).html """
+      <div>#{dayNames[date.getDay()]}</div>
+      <div>#{monthNames[date.getMonth() - 1][..2]} #{date.getDate()}</div>
+      """
+      for event in events
+        relativeStart = event.start - begin - BUSINESS_START
+        relativeEnd = begin + BUSINESS_END - event.end
+        column.append $('<div>').css({
+          'position': 'absolute'
+          'width': '100%'
+          'top': relativeStart * @tableHeight / BUSINESS_DURATION + 'px'
+          'bottom': relativeEnd * @tableHeight / BUSINESS_DURATION + 'px'
+          'background-color': event.color
+        }).html """
+        <div class='begin-time'>#{(new Date(event.start)).getHours()}:#{(new Date(event.start)).getMinutes()}</div>
+        <div>#{event.title}</div>
+        <div class='end-time'>#{(new Date(event.end)).getHours()}:#{(new Date(event.end)).getMinutes()}</div>
+        """
+
+
+  addColumnRight: ->
+
+  addColumnLeft: ->
+
+  today: ->
     today = new Date()
+    today.setHours 0, 0, 0, 0
+    return today
+
+  renderColumn: (begin, data) ->
+    columns.push column = $('<div>').css({
+      'display': 'table-cell'
+      'width':  '150px'
+      'padding': '2px'
+      'position': 'relative'
+      'text-align': 'center'
+      'background': begin is @today()
+    })
+    column.append $('<div>').css({
+      'position': 'absolute'
+      'top': '0px'
+      'left': '0px'
+      'right': '0px'
+    }).html """
+    <div>#{dayNames[date.getDay()]}</div>
+    <div>#{monthNames[date.getMonth()][..2]} #{date.getDate()}</div>
+    """
+    for event in day
+      relativeStart = event.start - begin - BUSINESS_START
+      relativeEnd = begin + BUSINESS_END - event.end
+      column.append $('<div>').css({
+        'position': 'absolute'
+        'width': '100%'
+        'top': relativeStart * @tableHeight / BUSINESS_DURATION + 'px'
+        'bottom': relativeEnd * @tableHeight / BUSINESS_DURATION + 'px'
+        'background-color': event.color
+      }).html """
+      <div class='begin-time'>#{(new Date(event.start)).getHours()}:#{(new Date(event.start)).getMinutes()}</div>
+      <div>#{event.title}</div>
+      <div class='end-time'>#{(new Date(event.end)).getHours()}:#{(new Date(event.end)).getMinutes()}</div>
+      """
+
+  render: (duration = 7, begin)->
+    begin = new Date()
     unless begin?
-      year = today.getYear() + 1900
-      month = today.getMonth()
-      begin = +(new Date year, month, (today.getDate() - today.getDay()), 0, 0, 0)
+      begin.setDate begin.getDate() - begin.getDay() + if day is 0 then -6 else 1
+      begin.setHours 0, 0, 0, 0
+    begin = +begin
 
     @data begin, begin + DAY * duration, (events) =>
       days = ([] for [1..duration])
@@ -45,37 +126,7 @@ class Calendar
 
       for day, i in days
         dayStart = begin + i * DAY
-        columns.push column = $('<div>').css({
-          'display': 'table-cell'
-          'width':  '150px'
-          'padding': '2px'
-          'position': 'relative'
-          'text-align': 'center'
-          'background': if i is today.getDay() then '#FFD' else if i % 2 is 1 then '#FFF' else '#EEE'
-        })
-        column.append $('<div>').css({
-          'position': 'absolute'
-          'top': '0px'
-          'left': '0px'
-          'right': '0px'
-        }).html """
-        <div>#{dayNames[new Date(begin + DAY * i).getDay()]}</div>
-        <div>#{monthNames[new Date(begin + DAY * i).getMonth()][..2]} #{new Date(begin + DAY * i).getDate()}</div>
-        """
-        for event in day
-          relativeStart = event.start - dayStart - BUSINESS_START
-          relativeEnd = dayStart + BUSINESS_END - event.end
-          column.append $('<div>').css({
-            'position': 'absolute'
-            'width': '100%'
-            'top': relativeStart * @tableHeight / BUSINESS_DURATION + 'px'
-            'bottom': relativeEnd * @tableHeight / BUSINESS_DURATION + 'px'
-            'background-color': event.color
-          }).html """
-          <div class='begin-time'>#{(new Date(event.start)).getHours()}:#{(new Date(event.start)).getMinutes()}</div>
-          <div>#{event.title}</div>
-          <div class='end-time'>#{(new Date(event.end)).getHours()}:#{(new Date(event.end)).getMinutes()}</div>
-          """
+        columns.push @renderColumn dayStart, day
 
       @el.html ''
       for column in columns
