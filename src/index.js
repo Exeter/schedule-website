@@ -6,7 +6,7 @@
 
   BUSINESS_START = 1000 * 60 * 60 * 7;
 
-  BUSINESS_END = 1000 * 60 * 60 * 21;
+  BUSINESS_END = 1000 * 60 * 60 * 20;
 
   BUSINESS_DURATION = BUSINESS_END - BUSINESS_START;
 
@@ -27,20 +27,103 @@
       this.render(10);
     }
 
+    Calendar.prototype.getColumnForDate = function(date) {
+      var begin;
+      begin = +(new Date(date.getYear() + 1900, date.getMonth(), date.getDay(), 0, 0, 0));
+      return this.data(begin, begin + DAY * duration, (function(_this) {
+        return function(events) {
+          var column, event, relativeEnd, relativeStart, _i, _len, _results;
+          events = events.filter(function(event) {
+            var _ref;
+            return (0 < (_ref = event.start - begin) && _ref < DAY * duration);
+          });
+          columns.push(column = $('<div>').css({
+            'display': 'table-cell',
+            'width': '150px',
+            'padding': '2px',
+            'position': 'relative',
+            'text-align': 'center',
+            'background': i === today.getDay() ? '#FFD' : i % 2 === 1 ? '#FFF' : '#EEE'
+          }));
+          column.append($('<div>').css({
+            'position': 'absolute',
+            'top': '0px',
+            'left': '0px',
+            'right': '0px'
+          }).html("<div>" + dayNames[date.getDay()] + "</div>\n<div>" + monthNames[date.getMonth() - 1].slice(0, 3) + " " + (date.getDate()) + "</div>"));
+          _results = [];
+          for (_i = 0, _len = events.length; _i < _len; _i++) {
+            event = events[_i];
+            relativeStart = event.start - begin - BUSINESS_START;
+            relativeEnd = begin + BUSINESS_END - event.end;
+            _results.push(column.append($('<div>').css({
+              'position': 'absolute',
+              'width': '100%',
+              'top': relativeStart * _this.tableHeight / BUSINESS_DURATION + 'px',
+              'bottom': relativeEnd * _this.tableHeight / BUSINESS_DURATION + 'px',
+              'background-color': event.color
+            }).html("<div class='begin-time'>" + ((new Date(event.start)).getHours()) + ":" + ((new Date(event.start)).getMinutes()) + "</div>\n<div>" + event.title + "</div>\n<div class='end-time'>" + ((new Date(event.end)).getHours()) + ":" + ((new Date(event.end)).getMinutes()) + "</div>")));
+          }
+          return _results;
+        };
+      })(this));
+    };
+
+    Calendar.prototype.addColumnRight = function() {};
+
+    Calendar.prototype.addColumnLeft = function() {};
+
+    Calendar.prototype.today = function() {
+      var today;
+      today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return +today;
+    };
+
+    Calendar.prototype.renderColumn = function(begin, data) {
+      var column, event, relativeEnd, relativeStart, _i, _len;
+      column = $('<div>').css({
+        'display': 'table-cell',
+        'width': '150px',
+        'padding': '2px',
+        'position': 'relative',
+        'text-align': 'center',
+        'background': (+begin) === this.today() ? '#FFD' : Math.floor(begin / DAY) % 2 === 1 ? '#FFF' : '#EEE'
+      });
+      column.append($('<div>').css({
+        'position': 'absolute',
+        'top': '0px',
+        'left': '0px',
+        'right': '0px'
+      }).html("<div>" + dayNames[begin.getDay()] + "</div>\n<div>" + monthNames[begin.getMonth()].slice(0, 3) + " " + (begin.getDate()) + "</div>"));
+      for (_i = 0, _len = data.length; _i < _len; _i++) {
+        event = data[_i];
+        relativeStart = event.start - begin - BUSINESS_START;
+        relativeEnd = begin + BUSINESS_END - event.end;
+        column.append($('<div>').css({
+          'position': 'absolute',
+          'width': '100%',
+          'top': relativeStart * this.tableHeight / BUSINESS_DURATION + 'px',
+          'bottom': relativeEnd * this.tableHeight / BUSINESS_DURATION + 'px',
+          'background-color': event.color
+        }).html("<div class='begin-time'>" + ((new Date(event.start)).getHours()) + ":" + ((new Date(event.start)).getMinutes()) + "</div>\n<div>" + event.title + "</div>\n<div class='end-time'>" + ((new Date(event.end)).getHours()) + ":" + ((new Date(event.end)).getMinutes()) + "</div>"));
+      }
+      return column;
+    };
+
     Calendar.prototype.render = function(duration, begin) {
-      var month, today, year;
       if (duration == null) {
         duration = 7;
       }
-      today = new Date();
+      begin = new Date();
       if (begin == null) {
-        year = today.getYear() + 1900;
-        month = today.getMonth();
-        begin = +(new Date(year, month, today.getDate() - today.getDay(), 0, 0, 0));
+        begin.setDate(begin.getDate() - begin.getDay() + (day === 0 ? -6 : 1));
+        begin.setHours(0, 0, 0, 0);
       }
+      begin = +begin;
       return this.data(begin, begin + DAY * duration, (function(_this) {
         return function(events) {
-          var column, columns, day, dayStart, days, event, i, relativeEnd, relativeStart, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _results;
+          var column, columns, day, dayStart, days, event, i, _i, _j, _k, _len, _len1, _len2, _ref, _results;
           days = (function() {
             var _i, _results;
             _results = [];
@@ -59,37 +142,12 @@
           for (i = _j = 0, _len1 = days.length; _j < _len1; i = ++_j) {
             day = days[i];
             dayStart = begin + i * DAY;
-            columns.push(column = $('<div>').css({
-              'display': 'table-cell',
-              'width': '150px',
-              'padding': '2px',
-              'position': 'relative',
-              'text-align': 'center',
-              'background': i === today.getDay() ? '#FFD' : i % 2 === 1 ? '#FFF' : '#EEE'
-            }));
-            column.append($('<div>').css({
-              'position': 'absolute',
-              'top': '0px',
-              'left': '0px',
-              'right': '0px'
-            }).html("<div>" + dayNames[new Date(begin + DAY * i).getDay()] + "</div>\n<div>" + monthNames[new Date(begin + DAY * i).getMonth()].slice(0, 3) + " " + (new Date(begin + DAY * i).getDate()) + "</div>"));
-            for (_k = 0, _len2 = day.length; _k < _len2; _k++) {
-              event = day[_k];
-              relativeStart = event.start - dayStart - BUSINESS_START;
-              relativeEnd = dayStart + BUSINESS_END - event.end;
-              column.append($('<div>').css({
-                'position': 'absolute',
-                'width': '100%',
-                'top': relativeStart * _this.tableHeight / BUSINESS_DURATION + 'px',
-                'bottom': relativeEnd * _this.tableHeight / BUSINESS_DURATION + 'px',
-                'background-color': event.color
-              }).html("<div class='begin-time'>" + ((new Date(event.start)).getHours()) + ":" + ((new Date(event.start)).getMinutes()) + "</div>\n<div>" + event.title + "</div>\n<div class='end-time'>" + ((new Date(event.end)).getHours()) + ":" + ((new Date(event.end)).getMinutes()) + "</div>"));
-            }
+            columns.push(_this.renderColumn(new Date(dayStart), day));
           }
           _this.el.html('');
           _results = [];
-          for (_l = 0, _len3 = columns.length; _l < _len3; _l++) {
-            column = columns[_l];
+          for (_k = 0, _len2 = columns.length; _k < _len2; _k++) {
+            column = columns[_k];
             _results.push(_this.el.append(column));
           }
           return _results;
@@ -119,11 +177,5 @@
   loginElement = $('#login-btn-wrap');
 
   loginForm = $('#login-form');
-
-  $('#login-btn').click(function() {
-    return BootstrapDialog.show({
-      message: 'Hello'
-    });
-  });
 
 }).call(this);
