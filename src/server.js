@@ -20,6 +20,14 @@ REGULAR_EVENTS = [
     start: 1412802633621,
     duration: 7200000,
     frequency: 172800000
+  },
+  {
+    id: 2,
+    name: 'Morning Class',
+    color: '#EDF393',
+    start: 1412799033621,
+    duration: 3600000,
+    frequency: 172800000
   }
 ];
 
