@@ -3,22 +3,46 @@
     <title>PEA Schedule</title>
 
     <!-- Bootstrap calendar dependencies -->
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/docs/assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/theme.css"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="index.css"></script>
-    <link rel="stylesheet" type="text/css" href="vendor/jquery.weekcalendar.css"></script>
   </head>
 
   <body>
-    <div id="calendar"></div>
+    <div class="container">
+      <div id="calendar"></div>
+    </div>
+
+    <div id="login">
+      <div id="login-btn-wrap" class="form-group">
+        <button id="login-btn" class="btn btn-default" data-toggle="modal" data-target="#login-dialog">Login</button>
+      </div>
+    </div>
+
+    <div class="modal fade" id="login-dialog" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            <h4>Login</h4>
+          </div>
+          <div class="modal-body">
+            <div id="login-form" class="form-group">
+              <input id="login-username" type="text" class="form-control" placeholder="jsmith"/><br/>
+              <input id="login-password" type="password" class="form-control"/><br/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="login-submit" class="btn btn-primary">Login</button>
+            <button id="login-submit" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <!-- Bootstrap calendar -->
     <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="vendor/jquery.weekcalendar.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap/docs/assets/js/bootstrap.js"></script>
-    <!--<script type="text/javascript" src="bower_components/bootstrap-calendar/js/language/en-GB.js"></script>-->
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
     <!-- Our scripts -->
     <script type="text/javascript" src="src/index.js"></script>

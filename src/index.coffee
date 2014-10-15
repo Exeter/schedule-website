@@ -23,19 +23,20 @@ class Calendar
     @tableHeight = @wrapper.height()
     @wrapper.append @el = $('<div>').css {
       'display': 'table-row'
+      'overflow': 'hidden'
       'height': @tableHeight + 'px'
     }
-    @render()
+    @render 10
 
-  render: (begin)->
+  render: (duration = 7, begin)->
     today = new Date()
     unless begin?
       year = today.getYear() + 1900
       month = today.getMonth()
       begin = +(new Date year, month, (today.getDate() - today.getDay()), 0, 0, 0)
 
-    @data begin, begin + DAY * 7, (events) =>
-      days = ([] for [1..7])
+    @data begin, begin + DAY * duration, (events) =>
+      days = ([] for [1..duration])
 
       for event in events
         days[Math.floor((event.start - begin) / (1000 * 60 * 60 * 24))]?.push event
@@ -46,7 +47,7 @@ class Calendar
         dayStart = begin + i * DAY
         columns.push column = $('<div>').css({
           'display': 'table-cell'
-          'width':  '100px'
+          'width':  '150px'
           'padding': '2px'
           'position': 'relative'
           'text-align': 'center'
@@ -58,7 +59,7 @@ class Calendar
           'left': '0px'
           'right': '0px'
         }).html """
-        <div>#{dayNames[i]}</div>
+        <div>#{dayNames[new Date(begin + DAY * i).getDay()]}</div>
         <div>#{monthNames[new Date(begin + DAY * i).getMonth()][..2]} #{new Date(begin + DAY * i).getDate()}</div>
         """
         for event in day
@@ -66,7 +67,7 @@ class Calendar
           relativeEnd = dayStart + BUSINESS_END - event.end
           column.append $('<div>').css({
             'position': 'absolute'
-            'width': '100px'
+            'width': '100%'
             'top': relativeStart * @tableHeight / BUSINESS_DURATION + 'px'
             'bottom': relativeEnd * @tableHeight / BUSINESS_DURATION + 'px'
             'background-color': event.color
@@ -80,7 +81,7 @@ class Calendar
       for column in columns
         @el.append column
 
-calendar = new Calendar $('#calendar').css('height', '100%'), (start, end, cb) ->
+calendar = new Calendar $('#calendar'), (start, end, cb) ->
   $.ajax {
     url: '/events',
     data: {
@@ -92,3 +93,10 @@ calendar = new Calendar $('#calendar').css('height', '100%'), (start, end, cb) -
       console.log start, end, data
       cb data.result
   }
+
+loginElement = $ '#login-btn-wrap'
+loginForm = $ '#login-form'
+
+$('#login-btn').click ->
+  BootstrapDialog.show
+    message: 'Hello'
