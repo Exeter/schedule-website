@@ -112,11 +112,11 @@
     };
 
     Calendar.prototype.render = function(duration, begin) {
-      if (duration == null) {
+      if (duration === null) {
         duration = 7;
       }
       begin = new Date();
-      if (begin == null) {
+      if (begin === null) {
         begin.setDate(begin.getDate() - begin.getDay() + (day === 0 ? -6 : 1));
         begin.setHours(0, 0, 0, 0);
       }
@@ -134,7 +134,7 @@
           })();
           for (_i = 0, _len = events.length; _i < _len; _i++) {
             event = events[_i];
-            if ((_ref = days[Math.floor((event.start - begin) / (1000 * 60 * 60 * 24))]) != null) {
+            if ((_ref = days[Math.floor((event.start - begin) / (1000 * 60 * 60 * 24))]) !== null) {
               _ref.push(event);
             }
           }
