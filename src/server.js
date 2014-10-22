@@ -62,7 +62,7 @@ var temp_defaults = JSON.stringify({
             "label" : "No Class",
             "minutes" : 180
         },
-        "*" : {
+        "format" : {
             "lowercase" : 50,
             "uppercase" : 70,
             "default" : 50
@@ -401,14 +401,54 @@ var express = require('express'),
 
 var app = express();
 
+// formats to colors
+// AT: #F7FE2E
+// BU: #58FA58
+// CV: #2ECCFA
+// DW: #CC2EFA
+// EX: #FE2E2E
+// FY: #088A08
+// GZ: #FF8000
+// HQ: #045FB4
+
 var year_obj = JSON.parse(temp_year); 
 var week_obj = JSON.parse(temp_week); 
 var defaults_obj = JSON.parse(temp_defaults); 
+var ms_in_min = 60000;
 
 function toEvent (year_obj) {
-  for(key in year_obj.schedules)
-    console.log("week: " + JSON.stringify(year_obj.schedules[key]));
+  for (var key in year_obj.schedules)
+    //console.log("Calendar: " + JSON.stringify(year_obj.schedules[key].calendar));
+//console.log("Calendar: " + year_obj.schedules[key].calendar);
+	
+	if (year_obj.schedules[key].calendar == "week1" || year_obj.schedules[key].calendar == "week2") {
+		for (var day in week_obj.days) {
+            console.log(week_obj.days[day].label);
+			var start_time = 0; //edit later
+			//console.log("events: " + JSON.stringify(week_obj.days[day].events));
+			for(var i = 0; i < week_obj.days[day].events.length; i++) {
+				var event = week_obj.days[day].events[i];
+				console.log(event);
+				if (event.length == 1) {
+					if (event.charAt(0) == event.charAt(0).toLowerCase()) {
+						console.log(start_time);
+						start_time += defaults_obj.symbols.format.lowercase * ms_in_min;
+					} else {
+						console.log(start_time);
+						start_time += defaults_obj.symbols.format.uppercase * ms_in_min;
+					}
+					//console.log(JSON.stringify(defaults_obj.symbols.format.lowercase));
+				} else  {
+					console.log(start_time);
+					start_time += defaults_obj.symbols[event].minutes * ms_in_min;
+				}	
+                console.log("..."); 		
+			}
+		}
+	}
 } 
+
+//need start (ms), end (ms), color, name, (id---possible)
 
 toEvent(year_obj); 
 
