@@ -401,6 +401,16 @@ var express = require('express'),
 
 var app = express();
 
+// formats to colors
+// AT: #F7FE2E
+// BU: #58FA58
+// CV: #2ECCFA
+// DW: #CC2EFA
+// EX: #FE2E2E
+// FY: #088A08
+// GZ: #FF8000
+// HQ: #045FB4
+
 var year_obj = JSON.parse(temp_year); 
 var week_obj = JSON.parse(temp_week); 
 var defaults_obj = JSON.parse(temp_defaults); 
@@ -439,6 +449,8 @@ function toEvent (year_obj) {
 		}
 	}
 } 
+
+//need start (ms), end (ms), color, name, (id---possible)
 
 toEvent(year_obj); 
 
