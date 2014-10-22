@@ -401,20 +401,28 @@ var express = require('express'),
 
 var app = express();
 
-// formats to colors
-// AT: #F7FE2E
-// BU: #58FA58
-// CV: #2ECCFA
-// DW: #CC2EFA
-// EX: #FE2E2E
-// FY: #088A08
-// GZ: #FF8000
-// HQ: #045FB4
+// Maps formats to colors
+var format_to_color = {};
+format_to_color.a = format_to_color.t = "#F7FE2E";
+format_to_color.b = format_to_color.u = "#58FA58";
+format_to_color.c = format_to_color.v = "#2ECCFA";
+format_to_color.d = format_to_color.w = "#CC2EFA";
+format_to_color.e = format_to_color.x = "#FE2E2E";
+format_to_color.f = format_to_color.y = "#088A08";
+format_to_color.g = format_to_color.z = "#FF8000";
+format_to_color.h = format_to_color.q = "#045FB4";
+format_to_color["*"] = "#BDBDBD";
 
 var year_obj = JSON.parse(temp_year); 
 var week_obj = JSON.parse(temp_week); 
 var defaults_obj = JSON.parse(temp_defaults); 
 var ms_in_min = 60000;
+
+function time_to_ms(year, month, day, hour, minute) {
+	var date = new Date(year, month, day, hour, minute, 0, 0);
+	console.log(+date);
+
+}
 
 function toEvent (year_obj) {
   for (var key in year_obj.schedules)
@@ -423,26 +431,28 @@ function toEvent (year_obj) {
 	
 	if (year_obj.schedules[key].calendar == "week1" || year_obj.schedules[key].calendar == "week2") {
 		for (var day in week_obj.days) {
-            console.log(week_obj.days[day].label);
+            //console.log(week_obj.days[day].label);
 			var start_time = 0; //edit later
 			//console.log("events: " + JSON.stringify(week_obj.days[day].events));
 			for(var i = 0; i < week_obj.days[day].events.length; i++) {
 				var event = week_obj.days[day].events[i];
-				console.log(event);
+				//console.log(event);
 				if (event.length == 1) {
 					if (event.charAt(0) == event.charAt(0).toLowerCase()) {
-						console.log(start_time);
+						//console.log(start_time);
 						start_time += defaults_obj.symbols.format.lowercase * ms_in_min;
 					} else {
-						console.log(start_time);
+						//console.log(start_time);
 						start_time += defaults_obj.symbols.format.uppercase * ms_in_min;
 					}
-					//console.log(JSON.stringify(defaults_obj.symbols.format.lowercase));
+					console.log(JSON.stringify(defaults_obj.symbols.format.lowercase));
+
+console.log(JSON.stringify(format_to_color[JSON.stringify(defaults_obj.symbols.format.lowercase)]));
 				} else  {
-					console.log(start_time);
+					//console.log(start_time);
 					start_time += defaults_obj.symbols[event].minutes * ms_in_min;
 				}	
-                console.log("..."); 		
+                //console.log("..."); 		
 			}
 		}
 	}
