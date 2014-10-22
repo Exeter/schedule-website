@@ -411,18 +411,16 @@ function toEvent (year_obj) {
     //console.log("Calendar: " + JSON.stringify(year_obj.schedules[key].calendar));
 //console.log("Calendar: " + year_obj.schedules[key].calendar);
 	
-	if (year_obj.schedules[key].calendar == "week1") {
+	if (year_obj.schedules[key].calendar == "week1" || year_obj.schedules[key].calendar == "week2") {
 		for (var day in week_obj.days) {
+            console.log(week_obj.days[day].label);
 			var start_time = 0; //edit later
 			//console.log("events: " + JSON.stringify(week_obj.days[day].events));
 			for(var i = 0; i < week_obj.days[day].events.length; i++) {
-				
 				var event = week_obj.days[day].events[i];
 				console.log(event);
 				if (event.length == 1) {
-						
 					if (event.charAt(0) == event.charAt(0).toLowerCase()) {
-
 						console.log(start_time);
 						start_time += defaults_obj.symbols.format.lowercase * ms_in_min;
 					} else {
@@ -432,9 +430,9 @@ function toEvent (year_obj) {
 					//console.log(JSON.stringify(defaults_obj.symbols.format.lowercase));
 				} else  {
 					console.log(start_time);
-				
 					start_time += defaults_obj.symbols[event].minutes * ms_in_min;
-				}				
+				}	
+                console.log("..."); 		
 			}
 		}
 	}
