@@ -1,0 +1,52 @@
+{
+  "name" : "Week 2",
+  "label" : "Standard Week 2 with advising block",
+  "symbols" : {
+    "sports" : {
+      "label" : "JV/V Sports",
+      "minutes" : 235
+    }
+  },
+  "days" : {
+    "2" : {
+      "label" : "Tuesday",
+      "day" : "Tuesday",
+      "events" : [
+        "t","pass","b","pass","assemble", "break","pass","c","pass","D","lunch",
+        "E","pass","f","uni","g","pass","q","dinner","i"
+      ]
+    },
+    "1" : {
+      "label" : "Monday",
+      "day" : "Monday",
+      "events" : [
+        "u","pass","a","pass","faculty","pass","d","pass","C","lunch",
+        "e","pass","F","uni","z","pass","h","dinner","i"
+      ]
+    },
+    "3" : {
+      "label" : "Wednesday",
+      "day" : "Wednesday",
+      "events" : [
+        "d","pass","a","pass","med","pass2","advise","pass","f","pass","h","lunch",
+        "pass","sports","pass","I"
+      ]
+    },
+    "5" : {
+      "label" : "Friday",
+      "day" : "Friday",
+      "events" : [
+        "v","pass","d","pass","assemble", "break","pass","a","pass","B","lunch",
+        "x","pass","f","uni","g","pass","H","dinner"
+      ]
+    },
+    "4" : {
+      "label" : "Thursday",
+      "day" : "Thursday",
+      "events" : [
+        "w","pass","c","pass","dept","pass","b","pass","A","lunch",
+        "e","pass","y","uni","G","pass","h","dinner","i"
+      ]
+    }
+  }
+}

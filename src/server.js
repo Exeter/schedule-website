@@ -1,517 +1,142 @@
-//SRC
-
-var temp_defaults = JSON.stringify({
-    "symbols" : {
-        "med" : {
-            "label" : "Meditation",
-            "minutes" : 30
-        },
-        "assemble"  : {
-            "label" : "Assembly",
-            "minutes" : 30
-        },
-  "advise" : {
-      "label" : "Advising",
-      "minutes" : 30
-  },
-        "dept" : {
-            "label" : "Department Meeting",
-            "minutes" : 50
-        },
-        "faculty" : {
-            "label" : "Faculty Meeting",
-            "minutes" : 50
-        },
-        "break" : {
-            "label" : "Break",
-            "minutes" : 20
-        },
-        "uni" : {
-            "label" : "Uni Free",
-            "minutes" : 30
-        },
-        "lunch" : {
-            "label" : "Lunch",
-            "minutes" : 50
-        },
-        "dinner" : {
-            "label" : "Dinner",
-            "minutes" : 45
-        },
-        "sports" : {
-            "label" : "JV/V Sports",
-            "minutes" : 255
-        },
-        "pass" : {
-            "label" : "Passing",
-            "minutes" : 5
-        },
-  "pass2" : {
-      "label" : "Passing",
-      "minutes" : 10
-  },
-        "i" : {
-            "label" : "I",
-            "minutes" : 90
-        },
-        "I" : {
-            "label" : "I",
-            "minutes" : 150
-        },
-        "noclass" : {
-            "label" : "No Class",
-            "minutes" : 180
-        },
-        "format" : {
-            "lowercase" : 50,
-            "uppercase" : 70,
-            "default" : 50
-        }
-    },
-    "days" : {
-        "start" : "08:00",
-        "6" : {
-            "label" : "Saturday",
-      "day" : "Saturday",
-            "events" : [
-                "noclass", "sports"
-            ],
-            "allday" : [
-                "noclass"
-            ]
-        },
-        "7" : {
-            "label" : "Sunday",
-      "day" : "Sunday", 
-            "events" : [
-                "noclass"
-            ],
-            "allday" : [
-                "noclass"
-            ]
-        }
-    }
-}); 
-
-var temp_week = JSON.stringify({
-    "name" : "Week 1",
-    "label" : "Standard Week 1 with Advising Block",
-    "symbols" : {
-      "sports" : {
-        "label" : "JV/V Sports",
-        "minutes" : 235
-      }
-    },
-    "days" : {
-        "1" : {
-            "label" : "Monday",
-      "day" : "Monday",
-            "events" : [
-                "t","pass","b","pass","faculty","pass","c","pass","D","lunch",
-                "E","pass","f","uni","g","pass","q","dinner","i"
-            ]
-        },
-        "2" : {
-            "label" : "Tuesday",
-      "day" : "Tuesday",
-            "events" : [
-                "u","pass","a","pass","assemble","break","pass","d","pass","C","lunch",
-                "e","pass","F","uni","z","pass","h","dinner","i"
-            ]
-        },
-        "3" : {
-            "label" : "Wednesday",
-      "day" : "Wednesday",
-            "events" : [
-                "c","pass","b","pass","med","pass2","advise","pass","e","pass","g","lunch",
-                "pass","sports","pass","I"
-            ]
-        },
-        "4" : {
-            "label" : "Thursday",
-      "day" : "Thursday",
-            "events" : [
-                "v","pass","d","pass","dept","pass","a","pass","B","lunch",
-                "x","pass","f","uni","g","pass","H","dinner","i"
-            ]
-        },
-        "5" : {
-            "label" : "Friday",
-      "day" : "Friday",
-            "events" : [
-                "w","pass","c","pass","assemble","break","pass","b","pass","A","lunch",
-                "e","pass","y","uni","G","pass","h","dinner"
-            ]
-        }
-    }
-});
-
-var temp_year = JSON.stringify({
-    "year" : 2014,
-    "terms" : {
-        "0" : {
-            "label" : "Fall Term",
-            "abbr" : "FA/14",
-            "start" : "09.06.2014",
-            "end" : "11.22.2014"
-        },
-        "1" : {
-            "label" : "Winter Term",
-            "abbr" : "WI/15",
-            "start" : "12.02.2014",
-            "end" : "03.06.2015"
-        },
-        "2" : {
-            "label" : "Spring Term",
-            "abbr" : "SP/15",
-            "start" : "03.22.2015",
-            "end" : "06.04.2015"
-        }
-    },
-    "schedules" : {
-        "06.17.2014" : {
-            "end" : "08.24.2014",
-            "calendar" : "vacation"
-        },
-        "08.25.2014" : {
-            "end" : "08.31.2014",
-            "calendar" : "facultyweek"
-        },
-        "09.01.2014" : {
-            "end" : "09.07.2014",
-            "calendar" : "introweek"
-        },
-        "09.08.2014" : {
-            "end" : "09.14.2014",
-            "calendar" : "week1"
-        },
-        "09.15.2014" : {
-            "end" : "09.21.2014",
-            "calendar" : "week2"
-        },
-        "09.22.2014" : {
-            "end" : "09.28.2014",
-            "calendar" : "week1",
-            "overlays" : [
-                    "ALD"
-                ]
-        },
-        "09.29.2014" : {
-            "end" : "10.05.2014",
-            "calendar" : "week2"
-        },
-        "10.06.2014" : {
-            "end" : "10.12.2014",
-            "calendar" : "week1",
-      "overlays" : [
-        "planning"
-      ]
-        },
-  "10.13.2014" : {
-      "end"  : "10.16.2014",
-      "calendar" : "week2"
-  },
-  "10.17.2014" : {
-    "end" : "10.20.2014",
-    "calendar" : "week2",
-    "overlays" : [
-      "familyweekend","week2sat"
-    ]
-  },
-        "10.21.2014" : {
-            "end" : "10.26.2014",
-            "calendar" : "week1",
-        "overlays" : [
-          "week1deptmed"
-        ]
-        },
-        "10.27.2014" : {
-            "end" : "11.02.2014",
-            "calendar" : "week2",
-      "overlays" : [
-        "planning"
-      ]
-        },
-        "11.03.2014" : { 
-            "end" : "11.09.2014",
-            "calendar" : "week1"
-        },
-        "11.10.2014" : { 
-            "end" : "11.16.2014",
-            "calendar" : "week2"
-        },
-        "11.17.2014" : {
-            "end" : "11.23.2014",
-            "calendar" : "week1",
-      "overlays" : [
-        "finalweek_fall"
-      ]
-        },
-        "11.24.2014" : {
-            "end" : "12.01.2014",
-            "calendar" : "vacation"
-        },
-        "12.02.2014" : {
-            "end" : "12.07.2014",
-            "calendar" : "week1",
-      "overlays" : [
-        "firstweek_winter"
-      ]
-        },
-        "12.08.2014" : {
-            "end" : "12.14.2014",
-            "calendar" : "week2"
-        },
-        "12.15.2014" : {
-            "end" : "12.21.2014",
-            "calendar" : "week1",
-      "overlays" : [
-        "winter_break"
-      ]
-        },
-        "12.22.2014" : {
-            "end" : "01.04.2015",
-            "calendar" : "vacation"
-        },
-        "01.05.2015" : {
-            "end" : "01.11.2015",
-            "calendar" : "week1",
-      "overlays" : [
-        "firstweek_year"
-      ]
-        },
-        "01.12.2015" : {
-            "end" : "01.18.2015",
-            "calendar" : "week2",
-            "overlays" : [
-                "MLK"
-            ]
-        },
-        "01.19.2015" : {
-            "end" : "01.25.2015",
-            "calendar" : "week1",
-      "overlays" : [
-        "week1deptmed"
-      ]
-        },
-        "01.26.2015" : {
-            "end" : "02.01.2015",
-            "calendar" : "week2"
-        },
-        "02.02.2015" : {
-            "end" : "02.08.2015",
-            "calendar" : "week1"
-        },
-        "02.09.2015" : {
-            "end" : "02.15.2015",
-            "calendar" : "week2"
-        },
-        "02.16.2015" : {
-            "end" : "02.22.2015",
-            "calendar" : "week1"
-        },
-        "02.23.2015" : {
-            "end" : "03.01.2015",
-            "calendar" : "week2"
-        },
-        "03.02.2015" : {
-            "end" : "03.06.2015",
-      "calendar" : "week1",
-      "overlays" : [
-              "finalweek_winter"
-      ]
-        },
-        "03.07.2015" : {
-            "end" : "03.23.2015",
-            "calendar" : "vacation"
-        },
-        "03.24.2015" : {
-            "end" : "03.29.2015",
-            "calendar" : "week1"
-        },
-        "03.30.2015" : {
-            "end" : "04.05.2015",
-            "calendar" : "week2",
-            "overlays" : [
-                "experience_exeter"
-            ]
-        },
-        "04.06.2015" : {
-            "end" : "04.12.2015",
-            "calendar" : "week1",
-      "overlays" : [
-        "week1sat"
-      ]
-        },
-        "04.13.2015" : {
-            "end" : "04.19.2015",
-            "calendar" : "week2"
-        },
-        "04.20.2015" : {
-            "end" : "04.26.2015",
-            "calendar" : "week1",
-            "overlays" : [
-                "week1sat"
-            ]
-        },
-        "04.27.2015" : {
-            "end" : "05.03.2015",
-            "calendar" : "week2",
-      "overlays" : [
-        "week2sat"
-      ]
-        },
-        "05.04.2015" : {
-            "end" : "05.10.2015",
-            "calendar" : "week1"
-        },
-        "05.11.2015" : {
-            "end" : "05.17.2015",
-            "calendar" : "week2",
-      "overlays" : [
-        "week2sat"
-      ]
-        },
-        "05.18.2015" : {
-            "end" : "05.24.2015",
-            "calendar" : "week1"
-        },
-        "05.25.2015" : {
-            "end" : "05.31.2015",
-            "calendar" : "week2",
-            "overlays" : [
-                "week2memorial"
-            ]
-        },
-        "06.01.2015" : {
-            "end" : "06.07.2015",
-            "calendar" : "finalweek_spring"
-        },
-        "06.08.2015" : {
-            "end" : "06.23.2015",
-            "calendar" : "vacation"
-        }
-    }
-}); 
-
-
-var express = require('express'),
-    fs = require('fs'),
+// Dependencies
+var fs = require('fs'),
+    express = require('express'),
     url = require('url');
 
-var app = express();
+// Static data
+var year_obj = JSON.parse(fs.readFileSync('year.json')),
+    week1_obj = JSON.parse(fs.readFileSync('week1.json')),
+    week2_obj = JSON.parse(fs.readFileSync('week2.json')),
+    weeks = {
+      week1: week1_obj,
+      week2: week2_obj
+    },
+    defaults_obj = JSON.parse(fs.readFileSync('defaults.json'));
 
-// Maps formats to colors
-var format_to_color = {};
-format_to_color.a = format_to_color.t = "#F7FE2E";
-format_to_color.b = format_to_color.u = "#58FA58";
-format_to_color.c = format_to_color.v = "#2ECCFA";
-format_to_color.d = format_to_color.w = "#CC2EFA";
-format_to_color.e = format_to_color.x = "#FE2E2E";
-format_to_color.f = format_to_color.y = "#088A08";
-format_to_color.g = format_to_color.z = "#FF8000";
-format_to_color.h = format_to_color.q = "#045FB4";
-format_to_color["*"] = "#BDBDBD";
-
-var year_obj = JSON.parse(temp_year); 
-var week_obj = JSON.parse(temp_week); 
-var defaults_obj = JSON.parse(temp_defaults); 
-var ms_in_min = 60000;
-
-function time_to_ms(year, month, day, hour, minute) {
-	var date = new Date(year, month, day, hour, minute, 0, 0);
-	console.log(+date);
-
+function padTwo(n) {
+  var str = n.toString();
+  if (str.length === 1) return '0' + str;
+  else return str;
 }
 
-function toEvent (year_obj) {
-  for (var key in year_obj.schedules)
-    //console.log("Calendar: " + JSON.stringify(year_obj.schedules[key].calendar));
-//console.log("Calendar: " + year_obj.schedules[key].calendar);
-	
-	if (year_obj.schedules[key].calendar == "week1" || year_obj.schedules[key].calendar == "week2") {
-		for (var day in week_obj.days) {
-            //console.log(week_obj.days[day].label);
-			var start_time = 0; //edit later
-			//console.log("events: " + JSON.stringify(week_obj.days[day].events));
-			for(var i = 0; i < week_obj.days[day].events.length; i++) {
-				var event = week_obj.days[day].events[i];
-				//console.log(event);
-				if (event.length == 1) {
-					if (event.charAt(0) == event.charAt(0).toLowerCase()) {
-						//console.log(start_time);
-						start_time += defaults_obj.symbols.format.lowercase * ms_in_min;
-					} else {
-						//console.log(start_time);
-						start_time += defaults_obj.symbols.format.uppercase * ms_in_min;
-					}
-					console.log(JSON.stringify(defaults_obj.symbols.format.lowercase));
+// Maps formats to colors
+var format_to_color = {
+  "a": "#F7FE2E", "t": "#F7FE2E",
+  "b": "#58FA58", "u": "#58FA58",
+  "c": "#2ECCFA", "v": "#2ECCFA",
+  "d": "#CC2EFA", "w": "#CC2EFA",
+  "e": "#FE2E2E", "x": "#FE2E2E",
+  "f": "#088A08", "y": "#088A08",
+  "g": "#FF8000", "z": "#FF8000",
+  "h": "#045FB4", "q": "#045FB4",
+  "*": "#BDBDBD"
+};
 
-console.log(JSON.stringify(format_to_color[JSON.stringify(defaults_obj.symbols.format.lowercase)]));
-				} else  {
-					//console.log(start_time);
-					start_time += defaults_obj.symbols[event].minutes * ms_in_min;
-				}	
-                //console.log("..."); 		
-			}
-		}
-	}
-} 
+for (var key in format_to_color) {
+  format_to_color[key.toUpperCase()] = format_to_color[key];
+}
 
-//need start (ms), end (ms), color, name, (id---possible)
+// Convenience constants
+var MS_PER_MIN = 60000;
 
-toEvent(year_obj); 
+// Convenience function for converting
+// period-delimited time representation to epoch time.
+function time_to_ms(year, month, day, hour, minute) {
+  return (new Date(year, month, day, hour, minute, 0, 0)).getTime();
+}
 
-REGULAR_EVENTS = [
-  {
-    id: 0,
-    name: 'Daily Event',
-    color: '#A6B9C4',
-    start: 1412809833621,
-    duration: 3600000,
-    frequency: 86400000
-  },
-  {
-    id: 1,
-    name: 'Odd-Hours Event',
-    color: '#EDF393',
-    start: 1412802633621,
-    duration: 7200000,
-    frequency: 172800000
-  },
-  {
-    id: 2,
-    name: 'Morning Class',
-    color: '#EDF393',
-    start: 1412799033621,
-    duration: 3600000,
-    frequency: 172800000
+function ms_to_date(ms) {
+  var d = new Date(0);
+  d.setUTCSeconds(ms / 1000);
+  return d;
+}
+
+function getMonDate(ms) {
+  var d = ms_to_date(ms),
+      day = d.getDay(),
+      diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  d.setDate(diff);
+  if (d.getDay() !== 1) {
+    throw new Error('WRONG');
   }
-];
+  return d;
+}
+
+function getMonDay(ms) {
+  var d = getMonDate(ms);
+  return padTwo(d.getMonth() + 1) + '.' + padTwo(d.getDate()) + '.' + d.getFullYear();
+}
+
+function getMonTime(ms) {
+  var d = getMonDate(ms);
+  return d.getTime();
+}
+
+function getWeekDay(ms) {
+  var d = ms_to_date(ms);
+  return d.getDay();
+}
+
+/*
+ * Generate all events for the entire year.
+ */
+
+var all_events = {};
+
+function getDuration(event) {
+  if (event.match(/^[abcdefghituvwxyzq]$/) != null) {
+    return defaults_obj.symbols.format.lowercase * MS_PER_MIN;
+  }
+  else if (event.match(/^[ABCDEFGHI]$/) != null) {
+    return defaults_obj.symbols.format.uppercase * MS_PER_MIN;
+  }
+  else {
+    return defaults_obj.symbols[event].minutes * MS_PER_MIN;
+  }
+}
+
+function getColor(event) {
+  if (event in format_to_color) {
+    return format_to_color[event];
+  }
+  else {
+    return format_to_color['*'];
+  }
+}
+
+function generateEvents(start, week) {
+  var i, event, duration,
+      weekEvents = ((week.days[getWeekDay(start)] || {}).events || []),
+      startTime = start + 1000 * 60 * 60 * 8,
+      generatedEvents = [];
+  for (i = 0; i < weekEvents.length; i++) {
+    event = weekEvents[i]; duration = getDuration(event);
+    generatedEvents.push({
+      id: Math.random(),
+      title: event,
+      color: getColor(event),
+      start: startTime,
+      end: startTime + duration
+    });
+    startTime += duration;
+  }
+  return generatedEvents;
+}
+
+console.log(year_obj.schedules['10.13.2014']);
+
+var app = express();
 
 app.use('/bower_components', express.static('bower_components'));
 
 app.get('/events', function(req, res, next) {
   var from = Number(req.query.from),
-      to = Number(req.query.to), ev, st,
-      events = [];
-  for (var i = 0; i < REGULAR_EVENTS.length; i++) {
-    ev = REGULAR_EVENTS[i];
-    st = Math.floor((from - ev.start) / ev.frequency); startTime = 0;
-    while (startTime < to) {
-      startTime = ev.start + ev.frequency * st;
-      events.push({
-        id: ev.id.toString() + '@' + startTime,
-        title: ev.name,
-        color: ev.color,
-        start: startTime,
-        end: startTime + ev.duration
-      });
-      st += 1;
-    }
-  }
+      to = Number(req.query.to),
+      mon = getMonDay(from),
+      asdf = console.log('looking up', mon, year_obj.schedules[mon]),
+      events = generateEvents(from, weeks[year_obj.schedules[getMonDay(from)].calendar]);
   res.send(JSON.stringify({
-    success: 1,
+    success: true,
     result: events
   }));
 });
