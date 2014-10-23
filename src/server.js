@@ -19,7 +19,7 @@ function padTwo(n) {
     else return str;
 }
 
-// Maps formats to colors
+// Maps lowercase formats to colors
 var format_to_color = {
     "a": "#F7FE2E",
     "t": "#F7FE2E",
@@ -40,6 +40,7 @@ var format_to_color = {
     "*": "#BDBDBD"
 };
 
+// Adds uppercase blocks
 for (var key in format_to_color) {
     format_to_color[key.toUpperCase()] = format_to_color[key];
 }
@@ -47,8 +48,7 @@ for (var key in format_to_color) {
 // Convenience constants
 var MS_PER_MIN = 60000;
 
-// Convenience function for converting
-// period-delimited time representation to epoch time.
+// Convenience function for converting period-delimited time representation to epoch time.
 function time_to_ms(year, month, day, hour, minute) {
     return (new Date(year, month, day, hour, minute, 0, 0)).getTime();
 }
@@ -92,10 +92,16 @@ function getWeekDay(ms) {
 var all_events = {};
 
 function getDuration(event) {
+
+    // Lowercase letter denotes regular block
     if (event.match(/^[abcdefghituvwxyzq]$/) !== null) {
         return defaults_obj.symbols.format.lowercase * MS_PER_MIN;
+
+    // Uppercase letter denotes fat block
     } else if (event.match(/^[ABCDEFGHI]$/) !== null) {
         return defaults_obj.symbols.format.uppercase * MS_PER_MIN;
+
+    // All other events have their own times
     } else {
         return defaults_obj.symbols[event].minutes * MS_PER_MIN;
     }
@@ -112,12 +118,15 @@ function getColor(event) {
 function generateEvents(start, week) {
     var i, event, duration,
         weekEvents = ((week.days[getWeekDay(start)] || {}).events || []),
+
+        // On regular days, start time is 08:00
         startTime = start + 1000 * 60 * 60 * 8,
         generatedEvents = [];
     for (i = 0; i < weekEvents.length; i++) {
         event = weekEvents[i];
         duration = getDuration(event);
         generatedEvents.push({
+            // (FIX) Hopefully random numbers do not collide
             id: Math.random(),
             title: event,
             color: getColor(event),
@@ -129,7 +138,7 @@ function generateEvents(start, week) {
     return generatedEvents;
 }
 
-console.log(year_obj.schedules['10.13.2014']);
+//console.log(year_obj.schedules['10.13.2014']);
 
 var app = express();
 
@@ -139,7 +148,7 @@ app.get('/events', function(req, res, next) {
     var from = Number(req.query.from),
         to = Number(req.query.to),
         mon = getMonDay(from),
-        asdf = console.log('looking up', mon, year_obj.schedules[mon]),
+        // asdf = console.log('looking up', mon, year_obj.schedules[mon]),
         events = generateEvents(from, weeks[year_obj.schedules[getMonDay(from)].calendar]);
     res.send(JSON.stringify({
         success: true,
