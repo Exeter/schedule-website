@@ -2,8 +2,12 @@ schedule-website
 ================
 
 <b>Bugs</b>
-1. Blocks overlap on small screens.
-2. 
+
+1. Blocks overlap on small screens (Chrome--Ubuntu)
+
+2. Need to scroll left before scrolling right and displaying future events (Chrome--Ubuntu)
+
+3. Cannot stop scrolling using mouse after start (Chrome--Ubuntu)
 
 
 <b>Notes for Beginners</b>
