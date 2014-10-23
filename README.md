@@ -9,6 +9,8 @@ schedule-website
 
 3. Cannot stop scrolling using mouse after start (Chrome--Ubuntu)
 
+4. Zooming deletes colors and labels (Chrome--Ubuntu)
+
 
 <b>Notes for Beginners</b>
 
