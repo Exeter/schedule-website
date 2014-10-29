@@ -80,15 +80,21 @@ class Calendar
     @addColumnRight() for [1..7]
     @addColumnLeft() for [1..7]
 
+  day: (date) ->
+    day = new Date()
+    day.setHours 0, 0, 0, 0
+    day.setDate day.getDate() + date
+    return day
+
   addColumnRight: ->
     @rightmost = @rightmost + 1
-    begin = Date.fromEpoch(@today() + @rightmost * DAY)
+    begin = @day(@rightmost)
     @data begin.getTime(), begin.getTime() + DAY, (data) =>
       @el.append @renderColumn begin, data
 
   addColumnLeft: ->
     @leftmost = @leftmost - 1
-    begin = Date.fromEpoch(@today() + @leftmost * DAY)
+    begin = @day(@leftmost)
     @data begin.getTime(), begin.getTime() + DAY, (data) =>
       @el.append @renderColumn begin, data
 

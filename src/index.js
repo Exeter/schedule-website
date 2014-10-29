@@ -98,10 +98,18 @@
       }
     }
 
+    Calendar.prototype.day = function(date) {
+      var day;
+      day = new Date();
+      day.setHours(0, 0, 0, 0);
+      day.setDate(day.getDate() + date);
+      return day;
+    };
+
     Calendar.prototype.addColumnRight = function() {
       var begin;
       this.rightmost = this.rightmost + 1;
-      begin = Date.fromEpoch(this.today() + this.rightmost * DAY);
+      begin = this.day(this.rightmost);
       return this.data(begin.getTime(), begin.getTime() + DAY, (function(_this) {
         return function(data) {
           return _this.el.append(_this.renderColumn(begin, data));
@@ -112,7 +120,7 @@
     Calendar.prototype.addColumnLeft = function() {
       var begin;
       this.leftmost = this.leftmost - 1;
-      begin = Date.fromEpoch(this.today() + this.leftmost * DAY);
+      begin = this.day(this.leftmost);
       return this.data(begin.getTime(), begin.getTime() + DAY, (function(_this) {
         return function(data) {
           return _this.el.append(_this.renderColumn(begin, data));
