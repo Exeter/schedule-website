@@ -1,6 +1,17 @@
 schedule-website
 ================
 
+<b>Bugs</b>
+
+1. Blocks overlap on small screens (Chrome--Ubuntu)
+
+2. Need to scroll left before scrolling right and displaying future events (Chrome--Ubuntu)
+
+3. Cannot stop scrolling using mouse after start (Chrome--Ubuntu)
+
+4. Zooming deletes colors and labels (Chrome--Ubuntu)
+
+
 <b>Notes for Beginners</b>
 
 To setup for the first time, install nodejs, heroku-toolbelt, and bower. Run npm install and then bower install to install dependencies of project. To run the project locally, use foreman start.
